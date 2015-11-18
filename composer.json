@@ -25,7 +25,8 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php"
-        ]
+        ],
+        "app/Helpers/FlashHelper.php"
     },
     "scripts": {
         "post-install-cmd": [
