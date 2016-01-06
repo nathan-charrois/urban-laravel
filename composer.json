@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -26,7 +27,10 @@
         "classmap": [
             "tests/TestCase.php"
         ],
-        "app/Helpers/FlashHelper.php"
+        "files": [
+            "app/Helpers/FlashHelper.php",
+            "app/Helpers/AddressHelper.php"
+        ]
     },
     "scripts": {
         "post-install-cmd": [

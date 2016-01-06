@@ -24,6 +24,13 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
+     * Where to redirect upon successful registration.
+     * 
+     * @var string
+     */
+    protected $redirectPath = '/regions/create';
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
@@ -31,6 +38,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+
+        parent::__construct();
     }
 
     /**

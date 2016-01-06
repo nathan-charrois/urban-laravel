@@ -36,4 +36,19 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function owns($relation)
+    {
+        return $relation->user_id == $this->id;
+    }
+
+    public function regions()
+    {
+        return $this->hasMany(Region::class);
+    }
+
+    public function publish(Region $region)
+    {
+        return $this->regions()->save($region);
+    }
 }

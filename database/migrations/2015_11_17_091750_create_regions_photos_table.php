@@ -22,7 +22,9 @@ class CreateRegionsPhotosTable extends Migration
                                         ->onDelete('cascade'); // If region is deleted, 
                                                                // also delete associated photos.
 
+            $table->string('name');
             $table->string('path');
+            $table->string('thumbnail_path');
             $table->timestamps();
         });
     }

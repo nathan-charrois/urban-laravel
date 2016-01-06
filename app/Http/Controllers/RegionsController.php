@@ -12,6 +12,14 @@ use App\Helpers\FlashHelper;
 
 class RegionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+
+        // Delegate up to abstract App\Http\Controllers\Controller. 
+        parent::__construct();
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class RegionsController extends Controller
      */
     public function index()
     {
-        //
+        echo 'hey';
     }
 
     /**
@@ -40,11 +48,13 @@ class RegionsController extends Controller
      */
     public function store(RegionRequest $request, FlashHelper $flash)
     {
-        Region::create($request->all());
+        $region = $this->user->publish(
+            new Region($request->all())
+        );
 
         $flash->success('Success');
 
-        return redirect()->back();
+        return redirect($region->path());
     }
 
     /**
@@ -53,9 +63,11 @@ class RegionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($zip, $street)
     {
-        //
+        $region = Region::locatedAt($zip, $street);
+
+        return view('regions.show', compact('region'));
     }
 
     /**
