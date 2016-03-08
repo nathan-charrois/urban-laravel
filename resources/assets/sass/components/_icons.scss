@@ -1,0 +1,108 @@
+/*  Icons and Forms
+    ===
+
+    Append icon to input.
+    ---
+    Display an icon to the right of an input.
+
+    <div class="input-container">
+        <div class="input-append-icon error">
+            <span class="fa fa-exclamation-circle"></span>
+        </div>
+    </div>
+*/
+
+    .input-append-icon{
+        position: absolute;
+        right: -35px;
+        top: 50%;
+        cursor: pointer;
+        color: #f66051;
+    }
+
+        .input-append-icon span{
+            font-size: 18px;
+        }
+
+/*  Append icon inside input.
+    ---
+
+    <div>
+        <input type="text" />
+        <span class="fa fa-search input-append-inside" />
+    </div>
+*/
+    .input-append-inside{
+        position: absolute;
+        top: 12px;
+        right: 28px;
+        color: #ccc;
+    }
+
+/*  Ratings
+    ===
+
+    Stars
+    <span class="fa fa-star" />
+*/
+    .star-rating{
+        font-size: 1.1em;
+        line-height: 32px;
+
+        .fa{
+            color: #e6e6e6;
+            padding: 4px 2px;
+            cursor: pointer;
+        }
+        .fa.rating-active{
+            color: $primary;
+        }
+        /* When hovering, all icons are grey. */
+        .rating-hover ~ .fa {
+            color: #e6e6e6;
+        }
+        .fa.rating-hover{
+            color: $primary-hover;
+        }
+        .fa.rating-success{
+            color: $success;
+            font-size: 18px;
+            cursor: default;
+        }
+        .fa.rating-success {
+          -webkit-animation: pop-in 650ms linear both;
+          animation: pop-in 650ms linear both;
+        }
+        @-webkit-keyframes pop-in {
+           @extend .pop-in;
+        }
+        @keyframes pop-in {
+           @extend .pop-in;
+        }
+        .fa.rating-loading {
+            -webkit-animation: appear 1500ms linear infinite both;
+            animation: appear 1500ms linear infinite both;
+        }
+    }
+
+/*  Circle (Number)
+    ---
+
+    <div class="circle-rating">
+        <div class="rating-value">3.4</div>
+    </div>
+*/
+    .circle-rating{
+        background-color: $primary;
+        border-radius: 32px;
+        width: 32px;
+        height: 32px;
+        cursor: default;
+        .rating-value{
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 30px;
+            text-align: center;
+        }
+    }

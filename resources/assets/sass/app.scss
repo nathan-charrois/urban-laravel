@@ -1,9 +1,25 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Base
+@import "base/reset";
+@import "base/variables";
+@import "base/typography";
+@import "base/animations";
+@import "base/grid";
+@import "base/utilities";
 
-body{
-	padding: 15px;
-}
+// Components
+@import "components/buttons";
+@import "components/cards";
+@import "components/display-picture";
+@import "components/dropdowns";
+@import "components/editor";
+@import "components/forms";
+@import "components/hero";
+@import "components/icons";
+@import "components/links";
+@import "components/maps";
+@import "components/messages";
 
-img{
-	max-height: 150px;
-}
+// Layouts
+@import "layouts/default";
+@import "layouts/header";
+@import "layouts/footer";

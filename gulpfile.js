@@ -12,11 +12,15 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-	mix.sass('app.scss');
-		// .scripts([
-		// 	'libs/sweetalert.dev.js'
-		// ], './public/js/libs.js')
-		// .styles([
-		// 	'libs/sweetalert.css'
-		// ], './public/css/libs.css');
+	mix.sass('app.scss')
+		.scripts([
+			'thirdparty/jquery/jquery-2.2.0.js',
+			'thirdparty/jquery/jquery.tinypubsub.js',
+			'config.js',
+			'components/dropdown.js',
+			'components/fileUpload.js',
+			'components/starRating.js',
+			'components/toggleCheckBox.js',
+			'components/toggleSelect.js'
+		], './public/js/bundle.js');
 });

@@ -15,7 +15,7 @@ class Photo extends Model
     protected $table = 'regions-photos';
 
     /**
-     * Fillable fields for a photo.
+     * Fillable fields for a Photo.
      * 
      * @var array
      */

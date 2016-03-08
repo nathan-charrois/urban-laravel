@@ -1,0 +1,91 @@
+/*  Dropdown
+    ===
+
+    Basic
+    ---
+
+    <div class="dropdown">
+        <ul class="dropdown-menu">
+            <li><a href="#">Item</a></li>
+            ...
+        </ul>
+    </div>
+*/
+
+    .dropdown{
+        position: relative;
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: $mobile) {
+        .dropdown{
+            position: static;
+        }
+    }
+
+/*  Dropdown menu
+    ---
+*/
+    .dropdown-menu{
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        margin-top: 10px;
+        background-color: white;
+        min-width: 175px;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .20);
+        border-radius: 2px;
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: $mobile) {
+        .dropdown-menu{
+            left: 0;
+            margin-top: 10px;
+        }
+    }
+
+    .dropdown-menu a{
+        padding: 10px 15px;
+        white-space: nowrap;
+        display: block;
+        color: $body;
+        text-decoration: none;
+    }
+
+    /* Hover detail */
+    .dropdown-menu li{
+        a:hover{
+            background-color: $primary;
+            color: white;
+        }
+        &:first-child a:hover{
+            border-radius: 2px 2px 0px 0px;
+        }
+        &:last-child a:hover{
+            border-radius: 0px 0px 2px 2px;
+        }
+    }
+/*  Dropdown decoration
+    ---
+*/
+    .dropdown-menu:after{
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 10px 10px;
+        border-color: #eee transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        top: -10px;
+        right: 30px;
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: $mobile) {
+        .dropdown-menu:after{
+            right: 50%;
+            margin-right: -10px;
+        }
+    }

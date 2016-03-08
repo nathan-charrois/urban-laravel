@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use Validator;
+use App\User;
+use App\Events\UserWasCreated;
 use App\Http\Controllers\Controller;
+use App\Exceptions\InvalidConfirmationCodeException;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -25,7 +27,7 @@ class AuthController extends Controller
 
     /**
      * Where to redirect upon successful registration.
-     * 
+     *
      * @var string
      */
     protected $redirectPath = '/regions/create';
@@ -37,7 +39,10 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => [
+            'getLogout',
+            'verify'
+        ]]);
 
         parent::__construct();
     }
@@ -51,7 +56,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -65,10 +69,27 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'confirmation_code' => str_random(25)
         ]);
+
+        event(new UserWasCreated($user));
+
+        return $user;
+    }
+
+    /**
+     * Verify the user's email address.
+     *
+     * @param  string $confirmation_code
+     * @return \Illuminate\Http\Response
+     */
+    public function verify($confirmation_code = null)
+    {
+        if(empty($confirmation_code)) {
+            throw new InvalidConfirmationCodeException();
+        }
     }
 }

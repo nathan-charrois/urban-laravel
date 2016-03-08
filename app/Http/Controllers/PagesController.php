@@ -9,8 +9,8 @@ use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
-    public function home()
+    public function index()
     {
-    	return view('pages.home');
+    	return view('pages.index');
     }
 }

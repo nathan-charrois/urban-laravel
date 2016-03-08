@@ -1,0 +1,51 @@
+/*  Links
+    ===
+
+    Basic
+    ---
+*/
+
+    a{
+        display: inline-block;
+        text-decoration: underline;
+        color: $primary;
+        cursor: pointer;
+    }
+
+/*  Types
+    ---
+
+    <a href="link-grey">...</a>
+*/
+
+    .link-grey{
+        color: $body;
+        text-decoration: none;
+    }
+        .link-grey:hover{
+            color: $primary-hover;
+        }
+
+    .link-white{
+        color: white;
+        text-decoration: none;
+    }
+        .link-white:hover{
+            color: #CCC;
+        }
+
+/*  Font Sizes
+    ---
+*/
+    .link-large{
+        font-size: 28px;
+    }
+    .link-medium{
+        font-size: 22px;
+    }
+    .link-small{
+        font-size: 16px;
+    }
+    .link-body{
+        font-size: 14px;
+    }

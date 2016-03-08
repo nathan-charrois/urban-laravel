@@ -28,7 +28,11 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = [
+        'email',
+        'password',
+        'confirmation_code'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,6 +44,11 @@ class User extends Model implements AuthenticatableContract,
     public function owns($relation)
     {
         return $relation->user_id == $this->id;
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public function regions()

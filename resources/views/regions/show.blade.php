@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.public')
+@section('title', 'View Region')
 
 @section('content')
 	<div class="row">

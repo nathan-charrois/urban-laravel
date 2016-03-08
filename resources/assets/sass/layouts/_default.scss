@@ -1,0 +1,65 @@
+/*  Default Layout Styles
+    ===
+*/
+    html{ height: 100%; }
+    body{
+        background: #f9f9f9 linear-gradient(to bottom, #f4f4f2 0%, #f9f9f9 80%) no-repeat;
+        height: 100%;
+        width: 100%;
+    }
+
+/*  Site Structure
+    ===
+
+    Container Setup
+    ---
+*/
+    .site-wrap{
+        max-width: 1024px;
+        height: auto;
+        margin: 0 auto;
+    }
+    .site-wrap-small{
+        width: 400px;
+        height: auto;
+        margin: 0 auto;
+    }
+    @media only screen and (max-width: $tablet) {
+        div[class^="site-wrap"]{
+            width: 100%;
+            padding: 0 40px;
+        }
+    }
+
+/*  Container Row Colors
+    ---
+
+    .row-white
+    .row-grey
+ */
+    .row-white{ background-color: white; }
+    .row-grey{ background-color: #f7f7f7; }
+
+/*  Section Content Containers
+    ---
+*/
+    .content-container{
+        margin: 75px auto 75px;
+    }
+    .fullscreen-container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+/*  Notification Container
+    ---
+*/
+    .notifications-container{
+        position: absolute;
+        top: 175px;
+        left: 50%;
+        margin-left: -100px;
+    }

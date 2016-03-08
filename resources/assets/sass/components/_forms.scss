@@ -1,0 +1,302 @@
+/*  Form Structure
+    ===
+
+    Adjust .row vertical gutter.
+*/
+
+    fieldset > .row { margin-bottom: 30px; }
+
+/*  Forms
+    ===
+
+    Labels
+    ---
+
+    <label>Textarea</label>
+    <span class="label-subtext">500 char max.</span>
+*/
+
+    label{
+        font-weight: 700;
+        color: #5A5A5A;
+        display: block;
+        margin: 0 10px 10px 0;
+    }
+
+    /* Label Sub text */
+    .label-subtext{
+        color: $body;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+/*  Label Positions
+    ---
+
+    <div class="input-container">
+        <div class="columns">
+            <label />
+        </div>
+    </div>
+*/
+
+    /* Horizontal Setup */
+    .input-container .columns > label{
+        margin-top: 10px;
+    }
+
+/*  Inputs
+    ===
+
+    Input Container
+    ---
+
+    <div class="input-container">
+        <label />
+        <input />
+    </div>
+*/
+
+    input{
+        font-family: "Roboto";
+        outline: none;
+    }
+    .input-container{
+        position: relative;
+    }
+
+/*  Input Container Stack Fields
+    ---
+
+    <div class="input-container input-stack">
+        <div />
+        <div />
+    </div>
+*/
+
+    @media only screen and (max-width: $mobile) {
+        .input-container.input-stack > div{
+            margin-bottom: 15px;
+        }
+    }
+
+/*  Input Default
+    ---
+
+    <div class="input-container">
+        <input />
+    </div>
+*/
+    .input-container input{
+        width: 100%;
+        height: 40px;
+        background: $grey-light;
+        border: none;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2) inset;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 10px 9px 11px;
+        color: $grey-dark;
+    }
+    .input-container input:focus{
+        background-color: $grey-light-alt;
+        box-shadow: 0 1px 1px rgba(0,0,0,.3) inset;
+    }
+    .input-container input[disabled]{
+        color: #CCC;
+        cursor: not-allowed;
+    }
+
+/*  Input White (Variation)
+    ---
+
+    <div class="input-container input-white" />
+*/
+    .input-container.input-white input,
+    .input-container.input-white .select-container{
+        border-radius: 3px;
+        background-color: white;
+        box-shadow: 0px 2px 0px 0px rgba(0,0,0,.1);
+        color: $grey-medium;
+    }
+
+/*  Select
+    ---
+
+    <div class="select-container">
+        <select name="location" id="location">
+            <option>Vancouver</option>
+            <option>Seattle</option>
+        </select>
+        <div class="select-text"></div>
+        <div class="select-caret">
+            <i class="fa fa-caret-down"></i>
+        </div>
+    </div>
+*/
+
+    .select-container{
+        width: 100%;
+        height: 40px;
+        color: $grey-dark;
+        background-color: $grey-light;
+        box-shadow: 0px 2px 0px 0px rgba(0,0,0,.1);
+        border: none;
+        position: relative;
+    }
+        .select-container:hover{
+            background-color: $grey-light-alt;
+        }
+
+        .select-container:hover .select-caret i{
+            color: $primary;
+        }
+
+    .select-container .select-text{
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 12px;
+    }
+    .select-container .select-caret{
+        z-index: 1;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+        .select-container .select-caret i{
+            color: #666666;
+            font-size: 15px;
+            line-height: 40px;
+        }
+
+    .select-container select{
+        width: 100%;
+        height: 40px;
+        z-index: 4;
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+    }
+
+
+
+/*  Checkboxes
+    ---
+
+    <input type="hidden" name="remember_login" data-input="remember_login" value="0" />
+    <label class="input-checkbox-label">
+        <span class="input-checkbox" data-input="remember_login"></span>
+        Remember Me?
+    </label>
+*/
+
+    .checkbox-container{}
+
+    .input-checkbox-label{
+        font-weight: 400;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .input-checkbox{
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: white;
+        border: 1px solid #bbb;
+        margin-right: 10px;
+        position: relative;
+        top:2px;
+    }
+    .input-checkbox.active{
+        background: $primary;
+        box-shadow: 0 0 0 2px #ffffff inset;
+    }
+
+
+
+/*  File Upload
+    ---
+
+    <div class="file-upload-container">
+        <input type="file" class="hide" />
+        <div class="file-upload">
+            <i class="fa"></i>
+        </div>
+    </div>
+*/
+
+    .file-upload-container{
+        height: 90px;
+        position: relative;
+    }
+    @media only screen and (max-width: $mobile) {
+        .file-upload-container{
+            float: right;
+        }
+    }
+    @media only screen and (max-width: $mobile) {
+        .file-upload-controls{
+            display: none;
+        }
+    }
+    .file-upload{
+        max-width: 90px;
+        min-width: 90px;
+        border-radius: 4px;
+        border: 2px dashed #ccc;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover{
+            border: 2px dashed #bbb;
+
+            i{
+                 color: #bbb;
+            }
+        }
+    }
+
+        .file-upload i{
+            color: #ccc;
+            font-size: 18px;
+            line-height: 80px;
+        }
+
+        .file-upload.active{ border-color: $primary;}
+        .file-upload.active i{ color: $primary;}
+
+        .file-upload.error{ border-color: $error;}
+        .file-upload.error i{ color: $error;}
+
+/**
+ *  File Upload Preview Image
+ *
+ *  <div class="file-upload-container">
+ *      <img src="#" class="file-preview" />
+ *  </div>
+ */
+    .file-upload-container .file-preview{
+        max-width: 100%;
+        max-height: 90px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    @media only screen and (max-width: $mobile) {
+        .file-upload-container .file-preview{
+            float: right;
+        }
+    }
