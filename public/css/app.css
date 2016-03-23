@@ -1848,19 +1848,19 @@ ol {
     ---
 */
 .card-photo {
-  height: 200px;
+  min-height: 175px;
   position: relative;
   background-color: #333; }
 
 /*  Card Text
     ---
  */
-.card-text-continaer {
+.card-text-container {
   position: absolute;
   bottom: 10px;
   left: 15px; }
 
-.card-text-continaer > * {
+.card-text-container > * {
   display: block;
   margin: 8px 0; }
 
@@ -2088,7 +2088,7 @@ label {
 */
 /* Horizontal Setup */
 .input-container .columns > label {
-  margin-top: 10px; }
+  margin-top: 12px; }
 
 /*  Inputs
     ===
@@ -2253,6 +2253,18 @@ input {
   background: #f66051;
   box-shadow: 0 0 0 2px #ffffff inset; }
 
+/* Disabled */
+.input-checkbox-label.disabled {
+  cursor: default; }
+
+.input-checkbox-label.disabled .input-checkbox {
+  background: #eee;
+  border: 1px solid #ddd;
+  cursor: default; }
+
+.input-checkbox-label.disabled .input-checkbox.active {
+  background: #bbb; }
+
 /*  File Upload
     ---
 
@@ -2320,6 +2332,32 @@ input {
 @media only screen and (max-width: 680px) {
   .file-upload-container .file-preview {
     float: right; } }
+
+/*  Tables
+    ===
+    
+    Responsive container
+*/
+@media (max-width: 920px) {
+  .scroll-container {
+    overflow-x: scroll;
+    border: 1px solid #aaa; } }
+
+/*  Table
+    ---
+*/
+.table {
+  width: 100%; }
+
+.table th {
+  text-align: left;
+  color: #5A5A5A; }
+
+.table th,
+.table td {
+  background: white;
+  white-space: nowrap;
+  padding: 5px; }
 
 /*  Hero Component
     ===
@@ -2433,6 +2471,12 @@ input {
     font-weight: bold;
     line-height: 30px;
     text-align: center; }
+
+.fa.fa-verified {
+  color: #85be5f; }
+
+.fa.fa-not-verified {
+  color: #eee; }
 
 /*  Links
     ===

@@ -23,10 +23,12 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Verification routes...
-Route::get('auth/verify/{confirmation_code}', 'Auth\AuthController@verify');
+Route::get('auth/verify/{confirmation_code?}', 'Auth\AuthController@verify');
 
-// Profile routes...
-Route::resource('user', 'UsersController');
+// Users routes...
+Route::get('users/{users}/changepassword', 'UsersController@getChangePassword');
+Route::post('users/{users}/changepassword', 'UsersController@postChangePassword');
+Route::resource('users', 'UsersController');
 
 // Regions routes...
 Route::resource('regions', 'RegionsController');

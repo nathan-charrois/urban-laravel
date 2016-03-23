@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Validator;
 use App\User;
+use App\Helpers\FlashHelper;
 use App\Events\UserWasCreated;
 use App\Http\Controllers\Controller;
 use App\Exceptions\InvalidConfirmationCodeException;
@@ -76,20 +77,33 @@ class AuthController extends Controller
         ]);
 
         event(new UserWasCreated($user));
-
         return $user;
     }
 
     /**
      * Verify the user's email address.
      *
-     * @param  string $confirmation_code
+     * @param  string       $confirmation_code
+     * @param  FlashHelper  $flash
      * @return \Illuminate\Http\Response
      */
-    public function verify($confirmation_code = null)
+    public function verify(FlashHelper $flash, $confirmation_code = null)
     {
         if(empty($confirmation_code)) {
             throw new InvalidConfirmationCodeException();
         }
+
+        $user = User::whereConfirmationCode($confirmation_code)->first();
+
+        if(!$user) {
+            throw new InvalidConfirmationCodeException();
+        }
+
+        $user->verified = 1;
+        $user->confirmation_code = null;
+        $user->save();
+
+        $flash->success('Your account has been verified.');
+        return view('pages.index');
     }
 }

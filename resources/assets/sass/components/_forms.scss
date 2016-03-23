@@ -42,9 +42,9 @@
 
     /* Horizontal Setup */
     .input-container .columns > label{
-        margin-top: 10px;
+        margin-top: 12px;
     }
-
+    
 /*  Inputs
     ===
 
@@ -224,6 +224,19 @@
     .input-checkbox.active{
         background: $primary;
         box-shadow: 0 0 0 2px #ffffff inset;
+    }
+    
+    /* Disabled */
+    .input-checkbox-label.disabled{
+        cursor: default;
+    }
+    .input-checkbox-label.disabled .input-checkbox{
+        background: #eee;
+        border: 1px solid #ddd;
+        cursor: default;
+    }
+    .input-checkbox-label.disabled .input-checkbox.active{
+        background: #bbb;
     }
 
 

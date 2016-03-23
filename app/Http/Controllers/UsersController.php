@@ -4,7 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Input;
+use Redirect;
+use App\User;
+use App\Events\UserWasCreated;
+use App\Helpers\FlashHelper;
 use App\Http\Requests;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
@@ -28,7 +36,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -38,7 +48,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -47,9 +57,19 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request, FlashHelper $flash)
     {
-        //
+        $user = User::create([
+            'email' => Input::get('email'),
+            'deleted' => Input::get('deleted'),
+            'verified' => Input::get('verified'),
+            'password' => bcrypt(Input::get('password')),
+            'confirmation_code' => str_random(25)
+        ]);
+        
+        event(new UserWasCreated($user));
+        $flash->success('The account was created.');
+        return Redirect::action('UsersController@show', ['id' => $user->id]);
     }
 
     /**
@@ -59,8 +79,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $user = User::whereId($id)->first();
+        
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -69,10 +91,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $user = $this->user;
-
+        $user = User::whereId($id)->first();
+        
         return view('users.edit', compact('user'));
     }
 
@@ -83,9 +105,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UserRequest $request, $id)
+    {   
+        $user = User::whereId($id)->first();
+        
+        $user->update([
+            'email' => Input::get('email'),
+            'deleted' => Input::get('deleted'),
+            'verified' => Input::get('verified')
+        ]);
+        
+        $user->save();
+        
+        return Redirect::action('UsersController@show', ['id' => $user->id]);
     }
 
     /**
@@ -97,5 +129,37 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    /**
+     * Show form for editing the user's password.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+     public function getChangePassword($id)
+     {
+        $user = User::whereId($id)->first();
+         
+        return view('users/changepassword', compact('user'));
+     }
+     
+     /**
+      * Store form for editing the user's password.
+      *
+      * @param int $id
+      * @return \Illuminate\Http\Response
+      */
+    public function postChangePassword(ChangePasswordRequest $request, $id)
+    {
+        $user = User::whereId($id)->first();
+        
+        $user->update([
+            'password' => Input::get('password')
+        ]);
+
+        $user->save();
+
+        return Redirect::action('UsersController@show', ['id' => $user->id]);
     }
 }

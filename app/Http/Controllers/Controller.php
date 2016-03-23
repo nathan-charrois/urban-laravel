@@ -19,6 +19,6 @@ abstract class Controller extends BaseController
     	$this->user = Auth::user();
 
     	view()->share('signedIn', Auth::check());
-    	view()->share('user', $this->user);
+    	view()->share('currentUser', $this->user);
     }
 }

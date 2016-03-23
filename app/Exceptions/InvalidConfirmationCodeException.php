@@ -6,5 +6,5 @@ use Exception;
 
 class InvalidConfirmationCodeException extends Exception
 {
-	public $message = 'Invalid Confirmation Code';
+	public $message = 'Invalid confirmation code.';
 }

@@ -10186,10 +10186,29 @@ return jQuery;
 
         this.$element = $(element);
         this.uniqueID = this.getElementID();
-        this.$input = $('input[data-input="'+this.uniqueID+'"]');
+        this.$input = this.$element.siblings('input');
         this.toggleValue = (this.$input.val() == 0) ? 1 : 0;
+        this.disabled = this.isDisabled();
+        this.active = this.isActive();
+            
+            console.log(this.disabled);
+        if(this.disabled) {
+            this.$element.addClass('disabled');
+        }
+        
+        if(this.active == 1) {
+            this.$element.children('span').addClass('active');
+        }
 
         this.bindEvents();
+    }
+    
+    ToggleCheckBox.prototype.isDisabled = function() {
+        return typeof this.$input.attr('disabled') !== "undefined";
+    }
+    
+    ToggleCheckBox.prototype.isActive = function() {
+        return this.$input.val();
     }
 
     ToggleCheckBox.prototype.bindEvents = function() {
@@ -10206,6 +10225,9 @@ return jQuery;
     }
 
     ToggleCheckBox.prototype.setStatus = function(status) {
+        if(this.disabled) {
+            return false;
+        }
         this.$input.val(status);
         this.$element.find('.input-checkbox').toggleClass('active');
     }

@@ -1,0 +1,28 @@
+/*  Tables
+    ===
+    
+    Responsive container
+*/
+    @media (max-width: $tablet) {
+        .scroll-container{
+            overflow-x: scroll;
+            border: 1px solid #aaa;
+        }
+    }
+    
+/*  Table
+    ---
+*/
+    .table{
+        width: 100%;
+    }
+    .table th{
+        text-align: left;
+        color: $grey-dark;
+    }
+    .table th,
+    .table td{
+        background: white;
+        white-space: nowrap;
+        padding: 5px;
+    }

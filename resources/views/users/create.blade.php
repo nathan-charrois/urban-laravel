@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'Edit User')
+@section('title', 'Create User')
 
 @section('content')
 	<section class="content-container">
@@ -9,11 +9,10 @@
 					<h1 class="heading-page">@yield('title')</h1>
 				</div>
 			</header>
-			<form action="/users/{{ $user->id }}" method="POST">
+			<form action="/users" method="POST">
 				@include('elements.errors')
 				
 				{!! csrf_field() !!}
-				{{ method_field('PUT') }}
 
 				<fieldset>
 					<div class="row">
@@ -27,12 +26,27 @@
 	                            <label for="email">Email:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-	                            <input type="text" name="email" id="email" value="{{ $user->email }}" />
-	                            <div class="row">
-	                                <div class="small-12 medium-12 large-12 columns">
-	                                    <a class="mtl" href="/users/{{ $user->id }}/changepassword">Change Password</a>
-	                                </div>
-	                            </div>
+	                            <input type="text" name="email" id="email" />
+	                        </div>
+	                    </div>
+	                </div>
+					<div class="row">
+	                    <div class="input-container">
+	                        <div class="small-12 medium-4 large-3 columns">
+	                            <label for="email">Password:</label>
+	                        </div>
+	                        <div class="small-12 medium-8 large-6 columns end">
+	                            <input type="text" name="password" id="password" />
+	                        </div>
+	                    </div>
+	                </div>
+					<div class="row">
+	                    <div class="input-container">
+	                        <div class="small-12 medium-4 large-3 columns">
+	                            <label for="email">Confirm Password:</label>
+	                        </div>
+	                        <div class="small-12 medium-8 large-6 columns end">
+	                            <input type="text" name="password_confirmation" id="password_confirmation" />
 	                        </div>
 	                    </div>
 	                </div>
@@ -43,14 +57,14 @@
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
 								<div class="checkbox-container mtm">
-									<input type="hidden" name="deleted" data-input="deleted" value="{{ $user->deleted }}"/>
+									<input type="hidden" name="deleted" data-input="deleted" />
 									<label class="input-checkbox-label">
 										<span class="input-checkbox" data-input="deleted"></span>
 										Deleted
 									</label>
 								</div>
                                 <div class="checkbox-container mtl">
-                                    <input type="hidden" name="verified" data-input="verified" value="{{ $user->verified }}"/>
+                                    <input type="hidden" name="verified" data-input="verified" />
                                     <label class="input-checkbox-label">
                                         <span class="input-checkbox" data-input="verified"></span>
                                      	Verified

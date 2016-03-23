@@ -13,15 +13,15 @@ class FlashHelper {
 	 */
 	public function create($message, $level = 'info')
 	{
-		return 	session()->flash('flash_message', [
+		return session()->flash('flash_message', [
 			'message' => $message,
 			'level' => $level
 		]);
 	}
-	
+
 	/**
 	 * Create an informative flash message.
-	 * 
+	 *
 	 * @param  string $message
 	 * @return void
 	 */
@@ -32,7 +32,7 @@ class FlashHelper {
 
 	/**
 	 * Create a success flash message.
-	 * 
+	 *
 	 * @param  string $message
 	 * @return void
 	 */
@@ -43,7 +43,7 @@ class FlashHelper {
 
 	/**
 	 * Create an error flash message.
-	 * 
+	 *
 	 * @param  string $message
 	 * @return void
 	 */

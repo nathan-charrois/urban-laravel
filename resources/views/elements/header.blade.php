@@ -27,12 +27,12 @@
                             </a>
                         </div>
                         <span class="dropdown">
-                            <a class="button button-text button-text-grey" data-event="toggle-dropdown">{{ $user->email }}</a>
+                            <a class="button button-text button-text-grey" data-event="toggle-dropdown">{{ $currentUser->email }}</a>
                             <ul class="dropdown-menu hide">
-                                <li><a href="/browse">Browse</a></li>
-                                <li><a href="/user/edit">Edit Profile</a></li>
+                                <li><a href="/users/">Users</a></li>
+                                <li><a href="/users/{{ $currentUser->id }}/edit">Edit My Profile</a></li>
                                 <li><a href="/regions/create">Create Region</a></li>
-                                <li><a href="/user/change-password">Change Password</a></li>
+                                <li><a href="/users/{{ $currentUser->id }}/changepassword">Change My Password</a></li>
                                 <li><a href="/auth/logout">Logout</a></li>
                             </ul>
                         </span>

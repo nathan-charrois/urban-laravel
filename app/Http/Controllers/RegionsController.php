@@ -16,10 +16,10 @@ class RegionsController extends Controller
     {
         $this->middleware('auth', ['except' => ['show']]);
 
-        // Delegate up to abstract App\Http\Controllers\Controller. 
+        // Delegate up to abstract App\Http\Controllers\Controller.
         parent::__construct();
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +44,8 @@ class RegionsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  RegionRequest  $request
-     * @return Response     
+     * @param  FlashHelper    $flash
+     * @return Response
      */
     public function store(RegionRequest $request, FlashHelper $flash)
     {
