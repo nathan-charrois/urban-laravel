@@ -20,6 +20,16 @@
 							<h3 class="heading-section">Change Password</h3>
 						</div>
 					</div>
+					<div class="row">
+	                    <div class="input-container">
+	                        <div class="small-12 medium-4 large-3 columns">
+	                            <label for="email">Email:</label>
+	                        </div>
+	                        <div class="small-12 medium-8 large-6 columns end">
+	                            <input type="email" name="email" id="email" value="{{ $user->email }}" disabled/>
+	                        </div>
+	                    </div>
+	                </div>
 	                <div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">

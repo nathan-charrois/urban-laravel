@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,17 @@ class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, 
+        Authorizable, 
+        CanResetPassword, 
+        SoftDeletes;
+        
+    /**
+     * The attributes that should be muted to dates.
+     *
+     * @var array
+     */
+     protected $dates = ['deleted_at'];
     
     /**
      * The database table used by the model.
@@ -33,7 +44,7 @@ class User extends Model implements AuthenticatableContract,
         'email',
         'password',
         'verified',
-        'deleted',
+        'deleted_at',
         'confirmation_code'
     ];
 

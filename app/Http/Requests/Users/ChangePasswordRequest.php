@@ -1,15 +1,15 @@
 <?php 
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Users;
 
+Use Auth;
 use App\Http\Requests\Request;
 
 class ChangePasswordRequest extends Request
 {
     public function authorize()
     {
-        // return Auth::check();
-        return true;
+        return Auth::check();
     }
     
     public function rules()

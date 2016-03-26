@@ -1819,7 +1819,11 @@ ol {
 .button-text {
   text-decoration: underline;
   background: none;
-  color: #f66051; }
+  color: #f66051;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  cursor: pointer; }
 
 .button-text:hover {
   color: #da4c3e; }
@@ -2021,6 +2025,10 @@ ol {
   outline: none;
   overflow-y: scroll; }
 
+.textarea-editor-body:disabled {
+  color: #ccc;
+  cursor: not-allowed; }
+
 /*  Toolbar
     ---
  */
@@ -2065,6 +2073,9 @@ fieldset > .row {
     <label>Textarea</label>
     <span class="label-subtext">500 char max.</span>
 */
+form.inline {
+  display: inline; }
+
 label {
   font-weight: 700;
   color: #5A5A5A;

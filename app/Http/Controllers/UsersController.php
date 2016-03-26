@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Input;
 use Redirect;
 use App\User;
+use App\Profile;
 use App\Events\UserWasCreated;
 use App\Helpers\FlashHelper;
 use App\Http\Requests;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
+use App\Http\Requests\Users\StoreUserRequest;
+use App\Http\Requests\Users\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
@@ -54,14 +55,12 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request, FlashHelper $flash)
+    public function store(StoreUserRequest $request, FlashHelper $flash)
     {
         $user = User::create([
             'email' => Input::get('email'),
-            'deleted' => Input::get('deleted'),
             'verified' => Input::get('verified'),
             'password' => bcrypt(Input::get('password')),
             'confirmation_code' => str_random(25)
@@ -105,14 +104,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {   
         $user = User::whereId($id)->first();
         
         $user->update([
             'email' => Input::get('email'),
-            'deleted' => Input::get('deleted'),
             'verified' => Input::get('verified')
+        ]);
+        
+        $user->profile->update([
+            'city' => Input::get('city'),
+            'name' => Input::get('name'),
+            'about' => Input::get('about')
         ]);
         
         $user->save();
@@ -126,9 +130,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, FlashHelper $flash)
     {
-        //
+        $user = User::whereId($id)->first();
+        $user->delete();
+
+        $flash->success('User was deleted');
+        return Redirect::action('UsersController@index');
     }
     
     /**
@@ -159,7 +167,7 @@ class UsersController extends Controller
         ]);
 
         $user->save();
-
+        $flash->success('Password has been changed.');
         return Redirect::action('UsersController@show', ['id' => $user->id]);
     }
 }

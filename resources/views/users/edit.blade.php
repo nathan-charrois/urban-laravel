@@ -17,10 +17,35 @@
 
 				<fieldset>
 					<div class="row">
+						<div class="large-12 columns">
+							<h3 class="heading-section">Location</h3>
+						</div>
+					</div>
+					<div class="row">
+		                <div class="input-container">
+		                    <div class="small-12 medium-4 large-3 columns">
+		                        <label for="city">Default City:</label>
+		                    </div>
+		                    <div class="small-12 medium-8 large-6 columns end">
+								<input type="text" name="city" id="city" value="{{ $user->profile->city }}"/>
+		                    </div>
+		                </div>
+		            </div>
+					<div class="row">
 						<div class="column">
 							<h3 class="heading-section">Details</h3>
 						</div>
 					</div>
+					<div class="row">
+		                <div class="input-container">
+		                    <div class="small-12 medium-4 large-3 columns">
+		                        <label for="name">Name:</label>
+		                    </div>
+		                    <div class="small-12 medium-8 large-6 columns end">
+								<input type="text" name="name" id="name" value="{{ $user->profile->name }}"/>
+		                    </div>
+		                </div>
+		            </div>
 	                <div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">
@@ -42,14 +67,7 @@
 	                            <label for="email">Account:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-								<div class="checkbox-container mtm">
-									<input type="hidden" name="deleted" data-input="deleted" value="{{ $user->deleted }}"/>
-									<label class="input-checkbox-label">
-										<span class="input-checkbox" data-input="deleted"></span>
-										Deleted
-									</label>
-								</div>
-                                <div class="checkbox-container mtl">
+                                <div class="checkbox-container mtm">
                                     <input type="hidden" name="verified" data-input="verified" value="{{ $user->verified }}"/>
                                     <label class="input-checkbox-label">
                                         <span class="input-checkbox" data-input="verified"></span>
@@ -59,8 +77,33 @@
 	                        </div>
 	                    </div>
 	                </div>
+					<div class="row">
+						<div class="large-12 columns">
+							<h3 class="heading-section">About</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
+							<div class="textarea-editor">
+	                            <textarea rows="5" name="about" class="textarea-editor-body">{{ $user->profile->about}}</textarea>
+	                            <div class="textarea-editor-tools">
+	                                <ul class="tools clearfix">
+	                                    <li class="tool disabled">
+	                                        <i class="fa fa-bold"></i>
+	                                    </li>
+	                                    <li class="tool disabled">
+	                                        <i class="fa fa-italic"></i>
+	                                    </li>
+	                                    <li class="tool disabled">
+	                                        <i class="fa fa-list-ul"></i>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </div>
+						</div>
+					</div>
 	                <div class="row">
-	                    <div class="small-12 medium-offset-8 medium-4 large-offset-3 large-2 columns">
+	                    <div class="small-12 medium-4 large-2 right columns">
 	                        <button id="submit" class="large-12 fill button button-primary">
 	                            Save
 	                        </button>

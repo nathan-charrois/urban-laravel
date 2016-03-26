@@ -56,14 +56,7 @@
 	                            <label for="email">Account:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-								<div class="checkbox-container mtm">
-									<input type="hidden" name="deleted" data-input="deleted" />
-									<label class="input-checkbox-label">
-										<span class="input-checkbox" data-input="deleted"></span>
-										Deleted
-									</label>
-								</div>
-                                <div class="checkbox-container mtl">
+                                <div class="checkbox-container mtm">
                                     <input type="hidden" name="verified" data-input="verified" />
                                     <label class="input-checkbox-label">
                                         <span class="input-checkbox" data-input="verified"></span>

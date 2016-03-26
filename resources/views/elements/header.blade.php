@@ -21,13 +21,8 @@
                 <div class="small-12 medium-5 large-5 columns">
                     @if ($signedIn)
                     <div class="user-controls right">
-                        <div class="display-picture-container">
-                            <a href="#">
-                                <img src="http://placehold.it/50x50" class="display-picture" />
-                            </a>
-                        </div>
                         <span class="dropdown">
-                            <a class="button button-text button-text-grey" data-event="toggle-dropdown">{{ $currentUser->email }}</a>
+                            <a class="button button-text button-text-grey" data-event="toggle-dropdown">{{ $currentUser->profile->nameOrEmail }}</a>
                             <ul class="dropdown-menu hide">
                                 <li><a href="/users/">Users</a></li>
                                 <li><a href="/users/{{ $currentUser->id }}/edit">Edit My Profile</a></li>

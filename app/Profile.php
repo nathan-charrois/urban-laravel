@@ -33,4 +33,18 @@ class Profile extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
+    /**
+     * Return email when name has not been set.
+     *
+     * @return string
+     */
+    public function getNameOrEmailAttribute()
+    {
+        if(!$this->user->profile->name) {
+            return $this->user->email;
+        }
+        
+        return $this->user->profile->name;
+    }
 }

@@ -40,6 +40,10 @@
         outline: none;
         overflow-y: scroll;
     }
+    .textarea-editor-body:disabled{
+        color: #ccc;
+        cursor: not-allowed;
+    }
 
 /*  Toolbar
     ---

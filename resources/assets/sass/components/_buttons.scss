@@ -63,6 +63,10 @@
         text-decoration: underline;
         background: none;
         color: $primary;
+        font-size: inherit;
+        font-family: inherit;
+        border: none;
+        cursor: pointer;
     }
 
         .button-text:hover{
