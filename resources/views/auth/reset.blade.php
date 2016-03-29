@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'Login')
+@section('title', 'Reset Password')
 
 @section('content')
     <section class="content-container">
@@ -9,10 +9,12 @@
                     <h1 class="heading-page">@yield('title')</h1>
                 </div>
             </header>
-            <form method="POST" action="/auth/login">
+            <form method="POST" action="/password/reset">
                 {!! csrf_field() !!}
 
                 @include('elements.errors')
+                
+                <input type="hidden" name="token" value="{{ $token }}">
 
                 <fieldset>
                     <div class="row">
@@ -27,34 +29,27 @@
                         <div class="column">
                             <div class="input-container">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required />
+                                <input type="password" name="password" id="password" required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="small-12 medium-7 large-7 columns">
-                            <div class="checkbox-container mtm mbl">
-                                <input type="hidden" name="remember" data-input="remember_login" value="0" id="remember">
-                                <label class="input-checkbox-label">
-                                    <span class="input-checkbox" data-input="remember_login"></span>
-                                    Remember Me?
-                                </label>
+                        <div class="column">
+                            <div class="input-container">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" required />
                             </div>
                         </div>
-                        <div class="small-12 medium-5 large-5 columns">
-                            <button id="submit" class="large-12 fill button button-primary">
-                                Login
+                    </div>
+                    <div class="row">
+                        <div class="small-12 medium-5 large-5 columns right">
+                            <button type="submit" class="large-12 fill button button-primary">
+                                Send
                             </button>
                         </div>
                     </div>
                 </fieldset>
             </form>
-            <footer class="row mtl">
-                <div class="column">
-                    <a href="/password/email" class="link-grey">Forgot password?</a> |
-                    <a href="/auth/register" class="link-grey">Create account</a>
-                </div>
-            </footer>
         </div>
     </section>
 @stop

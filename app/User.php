@@ -45,7 +45,7 @@ class User extends Model implements AuthenticatableContract,
         'password',
         'verified',
         'deleted_at',
-        'confirmation_code'
+        'token'
     ];
 
     /**
@@ -58,11 +58,6 @@ class User extends Model implements AuthenticatableContract,
         'remember_token'
     ];
     
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-        
     public function getCreatedAtAttribute($created_at)
     {
         return date('M j, Y', strtotime($created_at));
@@ -86,5 +81,13 @@ class User extends Model implements AuthenticatableContract,
     public function publish(Region $region)
     {
         return $this->regions()->save($region);
+    }
+    
+    public function confirmEmail()
+    {
+        $this->verified = true;
+        $this->token = null;
+        
+        $this->save();
     }
 }

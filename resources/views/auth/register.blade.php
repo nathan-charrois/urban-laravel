@@ -35,7 +35,7 @@
                     <div class="column">
                         <div class="input-container">
                             <label for="confirm-password">Confirm Password</label>
-                            <input type="password" name="password_confirmation" value="licoriceJ181990" id="password_confirmation" required />
+                            <input type="password" name="password_confirmation" id="password_confirmation" required />
                         </div>
                     </div>
                 </div>

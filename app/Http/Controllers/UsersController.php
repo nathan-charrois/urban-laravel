@@ -163,7 +163,7 @@ class UsersController extends Controller
         $user = User::whereId($id)->first();
         
         $user->update([
-            'password' => Input::get('password')
+            'password' => bcrypt(Input::get('password'))
         ]);
 
         $user->save();

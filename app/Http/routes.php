@@ -25,6 +25,12 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // Verification routes...
 Route::get('auth/verify/{confirmation_code?}', 'Auth\AuthController@verify');
 
+// Password reset...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
 // Users routes...
 Route::get('users/{users}/changepassword', 'UsersController@getChangePassword');
 Route::post('users/{users}/changepassword', 'UsersController@postChangePassword');

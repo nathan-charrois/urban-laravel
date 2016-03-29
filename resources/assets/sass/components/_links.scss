@@ -19,11 +19,12 @@
 */
 
     .link-grey{
-        color: $body;
+        color: $grey-medium;
         text-decoration: none;
+        text-shadow: 1px 1px white;
     }
         .link-grey:hover{
-            color: $primary-hover;
+            color: $grey-dark;
         }
 
     .link-white{

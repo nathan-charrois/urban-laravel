@@ -2147,7 +2147,7 @@ input {
   font-size: 14px;
   font-weight: 400;
   padding: 10px 9px 11px;
-  color: #5A5A5A; }
+  color: #5a5a5a; }
 
 .input-container input:focus {
   background-color: #ececec;
@@ -2167,7 +2167,7 @@ input {
   border-radius: 3px;
   background-color: white;
   box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
-  color: #999999; }
+  color: #aaaaaa; }
 
 /*  Select
     ---
@@ -2186,7 +2186,7 @@ input {
 .select-container {
   width: 100%;
   height: 40px;
-  color: #5A5A5A;
+  color: #5a5a5a;
   background-color: #f0f0f0;
   box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
   border: none;
@@ -2362,7 +2362,7 @@ input {
 
 .table th {
   text-align: left;
-  color: #5A5A5A; }
+  color: #5a5a5a; }
 
 .table th,
 .table td {
@@ -2507,11 +2507,12 @@ a {
     <a href="link-grey">...</a>
 */
 .link-grey {
-  color: #888;
-  text-decoration: none; }
+  color: #aaaaaa;
+  text-decoration: none;
+  text-shadow: 1px 1px white; }
 
 .link-grey:hover {
-  color: #da4c3e; }
+  color: #5a5a5a; }
 
 .link-white {
   color: white;

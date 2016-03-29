@@ -73,7 +73,7 @@ class AuthController extends Controller
         $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'confirmation_code' => str_random(25)
+            'token' => str_random(25)
         ]);
 
         event(new UserWasCreated($user));
@@ -81,29 +81,16 @@ class AuthController extends Controller
     }
 
     /**
-     * Verify the user's email address.
-     *
-     * @param  string       $confirmation_code
+     * @param  string       $token
      * @param  FlashHelper  $flash
      * @return \Illuminate\Http\Response
      */
-    public function verify(FlashHelper $flash, $confirmation_code = null)
+    public function verify(FlashHelper $flash, $token)
     {
-        if(empty($confirmation_code)) {
-            throw new InvalidConfirmationCodeException();
-        }
-
-        $user = User::whereConfirmationCode($confirmation_code)->first();
-
-        if(!$user) {
-            throw new InvalidConfirmationCodeException();
-        }
-
-        $user->verified = 1;
-        $user->confirmation_code = null;
-        $user->save();
+        User::whereToken($token)->firstOrFail()->confirmEmail();
 
         $flash->success('Your account has been verified.');
-        return view('pages.index');
+        
+        return redirect('/auth/login');
     }
 }
