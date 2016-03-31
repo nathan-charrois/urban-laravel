@@ -12,7 +12,7 @@ class Photo extends Model
      * 
      * @var string
      */
-    protected $table = 'regions-photos';
+    protected $table = 'regions_photos';
 
     /**
      * Fillable fields for a Photo.

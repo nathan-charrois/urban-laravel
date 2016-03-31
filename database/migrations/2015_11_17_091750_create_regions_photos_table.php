@@ -12,7 +12,7 @@ class CreateRegionsPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('regions-photos', function (Blueprint $table) {
+        Schema::create('regions_photos', function (Blueprint $table) {
             $table->increments('id');
 
             // Create relationship with Regions table.
@@ -36,6 +36,6 @@ class CreateRegionsPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('regions-photos');
+        Schema::drop('regions_photos');
     }
 }

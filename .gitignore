@@ -1,4 +1,6 @@
 /vendor
 /node_modules
 /public/uploads
+/public/css
+/public/js
 .env
