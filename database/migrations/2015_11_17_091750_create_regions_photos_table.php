@@ -12,16 +12,14 @@ class CreateRegionsPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('regions_photos', function (Blueprint $table) {
+        Schema::create('regions_photos', function (Blueprint $table)
+        {
             $table->increments('id');
-
-            // Create relationship with Regions table.
             $table->integer('region_id')->unsigned();
-            $table->foreign('region_id')->references('id')
-                                        ->on('regions')
-                                        ->onDelete('cascade'); // If region is deleted, 
-                                                               // also delete associated photos.
-
+            $table->foreign('region_id')
+                    ->references('id')
+                    ->on('regions')
+                    ->onDelete('cascade');
             $table->string('name');
             $table->string('path');
             $table->string('thumbnail_path');

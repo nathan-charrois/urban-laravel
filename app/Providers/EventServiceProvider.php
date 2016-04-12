@@ -15,7 +15,8 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\UserWasCreated' => [
             'App\Listeners\EmailUserValiation',
-            'App\Listeners\CreateUserProfile'
+            'App\Listeners\CreateUserProfile',
+            'App\Listeners\AssignUserRoles'
         ]
     ];
 

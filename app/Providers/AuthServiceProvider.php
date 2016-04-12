@@ -28,8 +28,11 @@ class AuthServiceProvider extends ServiceProvider
         parent::registerPolicies($gate);
 
         // Define permissions.
-        foreach ($this->getPermissions() as $permission) {
-            $gate->define($permission->name, function($user) use($permission){
+        foreach ($this->getPermissions() as $permission)
+        {  
+          
+            $gate->define($permission->name, function($user) use($permission)
+            {
                 return $user->hasRole($permission->roles);
             });
         }

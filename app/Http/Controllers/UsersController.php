@@ -93,6 +93,10 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::whereId($id)->first();
+
+        if($user->cannot('edit')){
+            abort(404);
+        }
         
         return view('users.edit', compact('user'));
     }
