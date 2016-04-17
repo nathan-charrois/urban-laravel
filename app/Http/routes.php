@@ -31,10 +31,17 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-// Users routes...
-Route::get('users/{users}/changepassword', 'UsersController@getChangePassword');
-Route::post('users/{users}/changepassword', 'UsersController@postChangePassword');
-Route::resource('users', 'UsersController');
+// Admin routes...
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+
+	// Admin Pages...
+	Route::get('/', 'AdminPagesController@index');
+
+	// Admin Users routes...
+	Route::get('/users/{users}/changepassword', 'AdminUsersController@getChangePassword');
+	Route::post('/users/{users}/changepassword', 'AdminUsersController@postChangePassword');
+	Route::resource('/users', 'AdminUsersController');
+});
 
 // Regions routes...
 Route::resource('regions', 'RegionsController');

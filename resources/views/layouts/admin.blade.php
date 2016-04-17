@@ -14,7 +14,7 @@
 <body>
     @include('elements.flash')
     @include('elements.header')
-    @include('elements.navigation')
+    @include('admin.elements.navigation')
     
     @yield('content')
     @yield('scripts')

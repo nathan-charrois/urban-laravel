@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.admin')
 @section('title', 'Edit User')
 
 @section('content')
@@ -9,7 +9,7 @@
 					<h1 class="heading-page">@yield('title')</h1>
 				</div>
 			</header>
-			<form action="/users/{{ $user->id }}/changepassword" method="POST">
+			<form action="/admin/users/{{ $user->id }}/changepassword" method="POST">
 				@include('elements.errors')
 				
 				{!! csrf_field() !!}
@@ -26,14 +26,14 @@
 	                            <label for="email">Email:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-	                            <input type="email" name="email" id="email" value="{{ $user->email }}" disabled/>
+	                            <input type="email" name="email" id="email" value="{{ $user->email }}" disabled />
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">
-	                            <label for="password">Password:</label>
+	                            <label for="password">New Password:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
 	                            <input type="password" name="password" id="password" />
@@ -43,7 +43,7 @@
 					<div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">
-	                            <label for="password_confirmation">Password Confirmation:</label>
+	                            <label for="password_confirmation">New Password Confirmation:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
 	                            <input type="password" name="password_confirmation" id="password_confirmation" />

@@ -4,10 +4,9 @@
     Structure
     ---
 */
-
     .site-header{
         width: 100%;
-        box-shadow: 0px 1px 2px 0px rgba(0,0,0,.10);
+        border-bottom: 1px solid #e7e9eb;
         position: relative;
     }
 
@@ -29,7 +28,6 @@
     Header sign in section
     ---
 */
-
     .header-sign-in{
         margin-top: 38px;
         width: 240px;
@@ -62,11 +60,9 @@
     User Controls
     ---
 */
-
     .user-controls{
         margin-top: 40px;
     }
-
 
     /* Tablet */
     @media only screen and (max-width: $tablet) {

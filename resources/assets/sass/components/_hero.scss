@@ -6,6 +6,7 @@
     .hero-container{
         background-image: url('../img/london.jpg');
         background-size: cover;
+        box-shadow: inset 0px 5px 25px 0px rgba(0,0,0,.4);
         height: 500px;
     }
     .hero-copy{

@@ -1833,6 +1833,9 @@ ol {
   color: #888;
   text-decoration: none; }
 
+.button-small {
+  padding: 12px 5px; }
+
 /*  Cards
     ===
 
@@ -2167,7 +2170,7 @@ input {
   border-radius: 3px;
   background-color: white;
   box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
-  color: #aaaaaa; }
+  color: #999999; }
 
 /*  Select
     ---
@@ -2378,6 +2381,7 @@ input {
 .hero-container {
   background-image: url("../img/london.jpg");
   background-size: cover;
+  box-shadow: inset 0px 5px 25px 0px rgba(0, 0, 0, 0.4);
   height: 500px; }
 
 .hero-copy {
@@ -2507,7 +2511,7 @@ a {
     <a href="link-grey">...</a>
 */
 .link-grey {
-  color: #aaaaaa;
+  color: #999999;
   text-decoration: none;
   text-shadow: 1px 1px white; }
 
@@ -2620,7 +2624,7 @@ html {
   height: 100%; }
 
 body {
-  background: #f9f9f9 linear-gradient(to bottom, #f4f4f2 0%, #f9f9f9 80%) no-repeat;
+  background: #f9f9f9 linear-gradient(to bottom, #f2f3f4 0%, #f9f9f9 80%) no-repeat;
   height: 100%;
   width: 100%; }
 
@@ -2687,7 +2691,7 @@ body {
 */
 .site-header {
   width: 100%;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e7e9eb;
   position: relative; }
 
 /*  Logo container

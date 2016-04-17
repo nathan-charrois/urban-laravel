@@ -1,14 +1,4 @@
 <header class="site-header">
-    <div class="row-grey">
-        <div class="site-wrap">
-            <div class="row">
-                <div class="small-12 medium-12 large-12 columns">
-                    <a href="mailto:nathancharrois@gmail.com" class="link-grey left mtm mbm">Send Feedback</a>
-                    <a href="https://github.com/NathanCH/Urban" class="link-grey right mtm mbm">View Source</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row-white">
         <div class="site-wrap">
             <div class="row">
@@ -24,10 +14,8 @@
                         <span class="dropdown">
                             <a class="button button-text button-text-grey" data-event="toggle-dropdown">{{ $currentUser->profile->nameOrEmail }}</a>
                             <ul class="dropdown-menu hide">
-                                <li><a href="/users/">Users</a></li>
-                                <li><a href="/users/{{ $currentUser->id }}/edit">Edit My Profile</a></li>
+                                <li><a href="/admin/">Admin</a></li>
                                 <li><a href="/regions/create">Create Region</a></li>
-                                <li><a href="/users/{{ $currentUser->id }}/changepassword">Change My Password</a></li>
                                 <li><a href="/auth/logout">Logout</a></li>
                             </ul>
                         </span>
@@ -50,4 +38,3 @@
             </div>
         </div>
     </div>
-</header>

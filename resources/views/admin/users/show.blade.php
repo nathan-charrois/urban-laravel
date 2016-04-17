@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.admin')
 @section('title', 'Show User')
 
 @section('content')
@@ -9,8 +9,8 @@
 					<h1 class="heading-page">@yield('title')</h1>
 				</div>
 				<div class="small-12 medium-4 large-2 columns">
-					<a href="/users/{{ $user->id }}/edit" class="btn-text mtm">Edit User</a>
-					<form action="/users/{{ $user->id }}" method="POST" class="inline">
+					<a href="/admin/users/{{ $user->id }}/edit" class="btn-text mtm">Edit User</a>
+					<form action="/admin/users/{{ $user->id }}" method="POST" class="inline">
 						{!! csrf_field() !!}
 						{{ method_field('DELETE') }}
 						<button type="submit" class="button-text mtm">Delete</button>

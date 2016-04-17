@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.admin')
 @section('title', 'Create User')
 
 @section('content')
@@ -9,7 +9,7 @@
 					<h1 class="heading-page">@yield('title')</h1>
 				</div>
 			</header>
-			<form action="/users" method="POST">
+			<form action="/admin/users" method="POST">
 				@include('elements.errors')
 				
 				{!! csrf_field() !!}
@@ -33,20 +33,20 @@
 					<div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">
-	                            <label for="email">Password:</label>
+	                            <label for="password">Password:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-	                            <input type="text" name="password" id="password" />
+	                            <input type="password" name="password" id="password" />
 	                        </div>
 	                    </div>
 	                </div>
 					<div class="row">
 	                    <div class="input-container">
 	                        <div class="small-12 medium-4 large-3 columns">
-	                            <label for="email">Confirm Password:</label>
+	                            <label for="password_confirmation">Confirm Password:</label>
 	                        </div>
 	                        <div class="small-12 medium-8 large-6 columns end">
-	                            <input type="text" name="password_confirmation" id="password_confirmation" />
+	                            <input type="password" name="password_confirmation" id="password_confirmation" />
 	                        </div>
 	                    </div>
 	                </div>

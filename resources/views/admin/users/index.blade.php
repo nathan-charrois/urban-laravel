@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.admin')
 @section('title', 'All Users')
 
 @section('content')
@@ -9,7 +9,7 @@
 					<h1 class="heading-page">@yield('title')</h1>
 				</div>
 				<div class="small-5 medium-2 large-1 columns">
-					<a href="/users/create" class="btn-text">Add User</a>
+					<a href="/admin/users/create" class="btn-text">Add User</a>
 				</div>
 			</header>
 			<div class="row">
@@ -19,12 +19,12 @@
 			</div>
 			<div class="row">
 				@foreach($users as $user)
-					<div class="small-6 large-2 columns">
+					<div class="small-6 large-2 columns end">
 						<div class="card-container">
 							<div class="card">
 								<div class="card-photo">
 									<div class="card-text-container">
-										<a class="link-white link-medium" href="users/{{ $user->id }}">
+										<a class="link-white link-medium" href="/admin/users/{{ $user->id }}">
 											{{ str_limit($user->email, $limit = 8, $end = '...') }}
 										</a>
 										{{ $user->created_at }}
@@ -35,7 +35,7 @@
 									<div class="pull-right mlm" title="Account Verified">
 										<i class="fa fa-circle fa-{{ $user->verified ? 'verified' : 'not-verified' }}"></i>
 									</div>
-									<a href="users/{{ $user->id }}/edit" class="pull-right">
+									<a href="/admin/users/{{ $user->id }}/edit" class="pull-right">
 										<i class="fa fa-pencil"></i>
 									</a>
 								</div>

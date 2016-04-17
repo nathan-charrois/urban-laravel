@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ use App\Http\Requests\Users\StoreUserRequest;
 use App\Http\Requests\Users\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
 
-class UsersController extends Controller
+class AdminUsersController extends Controller
 {
     /**
      * Create a new authentication controller instance.
@@ -39,8 +39,8 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        
-        return view('users.index', compact('users'));
+                
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -50,7 +50,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -64,12 +64,13 @@ class UsersController extends Controller
             'email' => Input::get('email'),
             'verified' => Input::get('verified'),
             'password' => bcrypt(Input::get('password')),
-            'confirmation_code' => str_random(25)
+            'confirmation_code' => str_random(25),
+            'token' => str_random(25)
         ]);
         
         event(new UserWasCreated($user));
         $flash->success('The account was created.');
-        return Redirect::action('UsersController@show', ['id' => $user->id]);
+        return Redirect::action('Admin\AdminUsersController@show', ['id' => $user->id]);
     }
 
     /**
@@ -82,7 +83,7 @@ class UsersController extends Controller
     {   
         $user = User::whereId($id)->first();
         
-        return view('users.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -95,7 +96,7 @@ class UsersController extends Controller
     {
         $user = User::whereId($id)->first();
         
-        return view('users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -122,7 +123,7 @@ class UsersController extends Controller
         
         $user->save();
         
-        return Redirect::action('UsersController@show', ['id' => $user->id]);
+        return Redirect::action('Admin\AdminUsersController@show', ['id' => $user->id]);
     }
 
     /**
@@ -137,7 +138,7 @@ class UsersController extends Controller
         $user->delete();
 
         $flash->success('User was deleted');
-        return Redirect::action('UsersController@index');
+        return Redirect::action('Admin\AdminUsersController@index');
     }
     
     /**
@@ -150,7 +151,7 @@ class UsersController extends Controller
      {
         $user = User::whereId($id)->first();
          
-        return view('users/changepassword', compact('user'));
+        return view('admin.users.changepassword', compact('user'));
      }
      
      /**
@@ -159,7 +160,7 @@ class UsersController extends Controller
       * @param int $id
       * @return \Illuminate\Http\Response
       */
-    public function postChangePassword(ChangePasswordRequest $request, $id)
+    public function postChangePassword(ChangePasswordRequest $request, $id, FlashHelper $flash)
     {
         $user = User::whereId($id)->first();
         
@@ -169,6 +170,6 @@ class UsersController extends Controller
 
         $user->save();
         $flash->success('Password has been changed.');
-        return Redirect::action('UsersController@show', ['id' => $user->id]);
+        return Redirect::action('Admin\AdminUsersController@show', ['id' => $user->id]);
     }
 }
