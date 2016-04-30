@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', '404')
+@section('title', '500')
 
 @section('content')
     <section class="content-container">
@@ -11,7 +11,7 @@
             </header>
             <header class="row">
                 <div class="column">
-                    <p>{{ $exception->message }}</p>
+                    <p>{{ $message }}</p>
                 </div>
             </header>
         </div>

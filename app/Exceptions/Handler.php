@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
+use App;
 use Exception;
-use App\Exceptions\InvalidConfirmationCodeException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -43,14 +43,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof InvalidConfirmationCodeException) {
-            return response()->view('errors.404', ['exception' => $e], 404);
+        if(App::environment('local')) {
+            return parent::render($request, $e);
         }
 
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
+        if($e instanceof ModelNotFoundException){
+            return response()->view('errors.500', [
+                'message' => 'Internal Server Error'
+            ]);
         }
-
-        return parent::render($request, $e);
     }
 }

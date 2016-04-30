@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Redirect;
 use Validator;
 use App\User;
 use App\Helpers\FlashHelper;
 use App\Events\UserWasCreated;
 use App\Http\Controllers\Controller;
-use App\Exceptions\InvalidConfirmationCodeException;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -90,7 +90,7 @@ class AuthController extends Controller
         User::whereToken($token)->firstOrFail()->confirmEmail();
 
         $flash->success('Your account has been verified.');
-        
-        return redirect('/auth/login');
+
+        return Redirect::action('PagesController@index');
     }
 }
