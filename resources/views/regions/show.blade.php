@@ -16,8 +16,7 @@
 				<button type="submit">Delete</button>
 			</form>
 		@endforeach 
-
-		@if ($user && $user->owns($region))
+		@if ($currentUser && $currentUser->owns($region))
 			<h3>Add Photos</h3>
 			<form id="photos" action="/{{ $region->zip }}/{{ $region->street }}/photos" method="POST" class="dropzone">
 				{{ csrf_field() }}
@@ -25,10 +24,8 @@
 		@endif
 	</div>
 @stop
-
 @section('scripts')
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
-
 	<script>
 		Dropzone.options.photos = {
 			paramName: 'photo',

@@ -69,7 +69,9 @@ class AdminUsersController extends Controller
         ]);
         
         event(new UserWasCreated($user));
+
         $flash->success('The account was created.');
+        
         return Redirect::action('Admin\AdminUsersController@show', ['id' => $user->id]);
     }
 
