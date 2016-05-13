@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Schema;
 use App\Permission;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -27,10 +28,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
 
+        // Providers boot during migration, make sure table exists 
+        // before defining gate.
+        if(!Schema::hasTable('permissions'))
+        {
+            return false;
+        }
+
         // Define permissions.
         foreach ($this->getPermissions() as $permission)
         {  
-          
             $gate->define($permission->name, function($user) use($permission)
             {
                 return $user->hasRole($permission->roles);
